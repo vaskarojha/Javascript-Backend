@@ -1,1 +1,1 @@
-export const DB_NAME = "ClipShare";
+export const DB_NAME = "test";
