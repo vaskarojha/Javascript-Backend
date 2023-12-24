@@ -13,7 +13,7 @@ connect_db()
     })
 })
 .catch((err)=>{
-    console.log("Error durring DB connection: ", err)
+    console.log("Error durring DB connection in index.js root file: ")
 })
 
 /*

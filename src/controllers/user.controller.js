@@ -7,9 +7,11 @@ import { ApiResponse } from '../utils/apiResponse.js'
 const generateAccessAndRefreshTokens = async (userId)=>{
     try{
         const user = await User.findById(userId)
+        console.log(user.fullname)
         const accessToken = user.generateAccessToken() 
         const refreshToken = user.generateRefreshToken()
-        
+        console.log("THIS IS TEST----", accessToken)
+        console.log("THIS IS TEST---->", accessToken)
         user.refreshToken = refreshToken
         await user.save({validateBeforeSave:false})
         
@@ -73,17 +75,15 @@ const registerUser = asyncHandler( async (req, res)=>{
     )
 })
 
-
-
-const loginUser = asyncHandler( async(req, res)=>{
-    const {username, email, password}= req.body
+const loginUser =  asyncHandler(async (req, res)=>{
+    const {username, email, password}=  req.body
 
     if(!email && !username){
         throw new ApiError(400, "Username or email is required!!")
     }
     const user = await User.findOne(
         {
-            $or:[email, username]
+            $or:[{email}, {username}]
         }
     )
     if(!user){
@@ -103,7 +103,10 @@ const loginUser = asyncHandler( async(req, res)=>{
         secure:true
     }
 
-    return res.status(200).cookie("accessToken", accessToken, options).cookie("refreshToken", refreshToken, options).json(new ApiResponse(200, {
+    return res.status(200)
+    .cookie("accessToken", accessToken, options)
+    .cookie("refreshToken", refreshToken, options)
+    .json(new ApiResponse(200, {
         user: loggedInUser, accessToken, refreshToken
     },
     "Login successful!!"))
@@ -123,8 +126,13 @@ const logoutUser = asyncHandler(async (req, res)=>{
         secure:true
     }
     return res.status(200).clearCookie("accessToken", options).clearCookie("refreshToken", options).json(new ApiResponse(
-        200, {}, "User logged out!"
+        200, {}, "User logged out."
     ))
 })
+
+
+
+
+
 
 export {registerUser, loginUser, logoutUser}
