@@ -3,8 +3,9 @@ import express from 'express'
 import connect_db from './db.js'
 import { TestUser } from "./model/testUser.js"
 import bcrypt from 'bcryptjs'
-import { Jwt } from "jsonwebtoken"
+import Jwt from "jsonwebtoken"
 import cookieParser from "cookie-parser"
+import {auth} from "./auth.middleware.js"
 
 dotenv.config({
     path:'../../.env'
@@ -84,6 +85,8 @@ app.post('/login', async(req, res)=>{
             expires: new Date(Date.now() +3 *24*60*60*1000),
             httpOnly: true
         }
+        user.password=undefined
+        user.token=token
         res.status(201).cookie("token", token, options).json({
             success:true,
             token,
@@ -93,6 +96,10 @@ app.post('/login', async(req, res)=>{
     } catch(err){
         console.log(err.message)
     }
+})
+
+app.get('/profile',auth,  (req, res)=>{    
+    res.send(req.user)
 })
 
 app.listen(5000,()=>{
