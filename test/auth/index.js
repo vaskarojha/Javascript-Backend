@@ -98,8 +98,17 @@ app.post('/login', async(req, res)=>{
     }
 })
 
-app.get('/profile',auth,  (req, res)=>{    
-    res.send(req.user)
+app.get('/profile',auth, async  (req, res)=>{    
+    console.log(req.user.id)
+    const user = await TestUser.findById(req.user.id)
+    if(!user){
+        res.status(400).send("Please login first.")
+    }
+    res.status(201).send(`Welcome : ${user.firstname}`)
+})
+
+app.get('/logout', (req, res)=>{
+    res.clearCookie('token').send("Logout successfully!")
 })
 
 app.listen(5000,()=>{
