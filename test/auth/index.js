@@ -109,11 +109,15 @@ app.get('/profile',auth, async  (req, res)=>{
 })
 
 app.post('/upload', auth, upload.single('uploaded_file'),async (req, res)=>{
-    console.log(req.file)
+    console.log(req.file.filename)
     if(!req.file.filename){
-        res.status(500).send("Error on uploading file")
+        res.status(500).send("Upload failed!!")
     }
-  res.status(200).send("upload Successfully").json(req.file)
+    res.status(200).json({
+        success:true,
+        message:"upload successfully",
+        file:req.file
+    })
     
 } )
 
