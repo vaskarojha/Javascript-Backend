@@ -8,6 +8,7 @@ const storage = multer.diskStorage({
         const uniqueId = Date.now()
         cb(null, file.fieldname + '-'+ uniqueId)
     }
+    
 })
 
 export default multer({storage:storage})

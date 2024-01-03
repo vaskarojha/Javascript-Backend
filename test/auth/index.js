@@ -6,6 +6,7 @@ import bcrypt from 'bcryptjs'
 import Jwt from "jsonwebtoken"
 import cookieParser from "cookie-parser"
 import {auth} from "./auth.middleware.js"
+import upload from './upload.middeware.js'
 
 dotenv.config({
     path:'../../.env'
@@ -99,7 +100,7 @@ app.post('/login', async(req, res)=>{
 })
 
 app.get('/profile',auth, async  (req, res)=>{    
-    console.log(req.user.id)
+    // console.log(req.user.id)
     const user = await TestUser.findById(req.user.id)
     if(!user){
         res.status(400).send("Please login first.")
@@ -107,9 +108,19 @@ app.get('/profile',auth, async  (req, res)=>{
     res.status(201).send(`Welcome : ${user.firstname}`)
 })
 
+app.post('/upload', auth, upload.single('uploaded_file'),async (req, res)=>{
+    console.log(req.file)
+    if(!req.file.filename){
+        res.status(500).send("Error on uploading file")
+    }
+  res.status(200).send("upload Successfully").json(req.file)
+    
+} )
+
 app.get('/logout', (req, res)=>{
     res.clearCookie('token').send("Logout successfully!")
 })
+
 
 app.listen(5000,()=>{
     console.log('App running at port 5000.')
