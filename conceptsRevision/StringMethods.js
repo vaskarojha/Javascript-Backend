@@ -102,6 +102,68 @@ result = [...result] //destructuring the iterator
 result = str5.matchAll(/ain/gi)
 result = [...result] //destructuring the iterator
 
+// string.replace(searchStr, replaceStr): It takes two paramaters, first paramater is a string to search with or without regexp and second paramater is a replacer string or a function to execute on match string.
+result = str5.replace("main", "rain")
+result = str5.replace('main', (match)=>{
+    return match.toUpperCase()
+})
+result = str5.replace(/main/gi, 'rain')
+
+//string.replaceAll() : replaces all the matches in the string. It also takes regexp as a first paramater
+result = str5.replaceAll('ain' , '---')
+result = str5.replaceAll('ain', (match)=>match.toUpperCase())
+
+// string.charCodeAt(position) it returns the character code value
+result = 'a'.charCodeAt() //returns 97
+result = 'A'.charCodeAt() //returns 65
+// NOTE: It works for UTF-16 i.e. from 0 and 65535 character code
+
+// string.codePointAt(posiiotn) : It returns the character code value but also above 65535
+result = 'a'.codePointAt() //returns 97
+//NOTE: It interprates the emojies in a different way.
+
+// string.fromCharCode() : It works exactly opposite to charCodeAt() method. It returns character from the supplied code
+// result = fromCodePoint(97)
+
+// string.toLowerCase() : converts all string to lower case letters
+
+result = str5.toLowerCase()
+
+// string.toUpperCase(): converts all string to uppercase letters
+
+result = str5.toUpperCase()
+
+// string.toLocaleUpperCase(): It gives different result using different locales
+const str6= 'istanbul'
+result = str6.toLocaleUpperCase('en-US') //returns ISTANBUL
+result = str6.toLocaleUpperCase('tr') //returns İSTANBUL
+
+//string.toLocaleLowerCase()
+const str7= 'İSTANBUL'
+result = str6.toLocaleLowerCase('en-US')
+result = str6.toLocaleLowerCase('tr')
+
+//string.toString() 
+const stringObject = new String('Hello world')
+result = stringObject //returns string object
+result = result.toString() // return the string text
+
+//string.valueOf()
+const stringObject2 = new String('Hello world')
+result = stringObject2 //returns string object
+result = result.valueOf() // return the string text
+
+
+// string.raw()
+const samplePath = 'C:\myFile\js'
+result = samplePath //returns C:myFilejs. it treats \ as a escape character and donot print that.
+const samplePath2 = 'C:\\myFile\\js' //returns C:\myFile\js
+result = samplePath2
+
+const str8 = 'sample'
+result = String.raw`Hi \n${str8}` 
+result = String.raw`C:\myFile\js`
+
+
 
 console.log(result)
-
