@@ -86,7 +86,7 @@ arrResult = foods.join('-') //returns : apple-banana-carrot-lemon-mango-appricot
 
 //arr.fill(item) : This method fills the whole array with the item provided in the paramater
 const foods2= foods
-console.log(foods)
+// console.log(foods)
 arrResult = foods2.fill('newItem') //returns ['newItem','newItem','newItem','newItem''newItem','newItem','newItem']
 const foods3= foods
 arrResult = foods3.fill('newItem', 4) //returns ['apple',   'banana','carrot',  'lemon','newItem', 'newItem','newItem']
@@ -97,5 +97,66 @@ arrResult = foods3.fill('newItem', 4) //returns ['apple',   'banana','carrot',  
 arrResult = foods.copyWithin(2) //make of copy of first 2 item and continue the element from start.
 arrResult = foods.copyWithin(2,4) //make of copy of first 2 item and continue the element from forth index
 arrResult = foods.copyWithin(2,4,7) // /make of copy of first 2 item and continue the element from forth index and donot include the index from seventh index.
+
+
+//arr.slice(startIndex, endIndex) : It is used to create a new array from existing by slicing its element. It starts from startIndex and goes till endIndex but doesnot include it.
+const array1 = ['apple',  'banana', 'carrot', 'lemon','mango',  'appricot','Orange']
+arrResult = array1.slice(1,4)
+
+//arr.splice() : It is similar to slicce but it modifies the original array and returns the value after removing from the existing array.
+const array2 = array1
+arrResult = array2.splice(0,2)
+
+
+//arr.sort() : This method is used to sort the array. By default it sort in ascending order
+arrResult = array1.sort()
+//Note: It changes the original array
+
+// arr.reverse(): This method is used to reverse the array elements.
+arrResult = array1.reverse()
+
+// Array.from() : This method works on array object. It converts array like object to an array
+const sampleStr = '1234'
+arrResult = Array.from(sampleStr) //returns : [ '1', '2', '3', '4' ]
+//This method can also take second paramater as call back function and works like a map method.
+arrResult = Array.from(sampleStr, (item)=>{
+    return Number(item)
+}) 
+
+//Array.isArray(Arr1): This method works in array object. It is just used to check either the given paramater is array or not
+arrResult = Array.isArray(array1) // returns: true
+arrResult = Array.isArray('text') // returns: false
+
+//Array.valueOf() : This method is used to create a copy of original array
+arrResult= array2.valueOf()
+
+//Array.entries() : This method returns a new Array Iterator Object with a index value and item is each saparate array.
+arrResult = array2.entries() // returns : Object [Array Iterator] {}
+
+// Array.keys() : This method returns the index key iterator object.
+arrResult = array2.keys() //returns : Object [Array Iterator] {}
+
+//Array.values() : This method returns the values of array in the form of iterator object.
+arrResult = array2.values() //Object [Array Iterator] {}
+//console.log([...arrResult]) // returns: [ 'mango', 'lemon', 'carrot', 'appricot', 'Orange' ]
+
+
+//Array.reduce(cb, initialValue) : This method is used to convert the array into single value at the end.
+function reducer(previousValue, currentValue){
+    return  previousValue +currentValue
+}
+const array4 = [1,2,3,4,5]
+arrResult= array4.reduce(reducer)
+
+//Array.reduceRight() : This method works like reduce instead from left to right this method start from right to left
+arrResult = array4.reduceRight(reducer)
+
+//Array.flat() : This method is used to convert multi dimension or nested array into flat one dimension array. By default flat() method goes to depth one.
+const array5 = [1,2,3,[3,4,5,[4,2]],[6,8,6]]
+arrResult = array5.flat() // returns: [ 1, 2, 3, 3, 4, 5, [ 4, 2 ], 6, 8, 6 ]
+arrResult = array5.flat(2) //returns : [1, 2, 3, 3, 4, 5, 4, 2, 6, 8,6]
+
+//Array.flatMap() : This method works like the combination of map() and flat() method. Its like first calling map() method and after the calling flat() method at the same point.
+arrResult = array5.flatMap(item=>(item+2)) //returns: [ 3, 4, 5, '3,4,5,4,22', '6,8,62' ]
 
 console.log(arrResult)
