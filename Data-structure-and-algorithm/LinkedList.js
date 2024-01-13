@@ -27,10 +27,30 @@ class LinkedList{
         this.length++
         return this
     }
+    pop(){
+        if(!this.head) undefined
+        
+        let temp = this.head
+        let pre = this.head
+
+        while(temp.nex){
+            pre = temp
+            temp = temp.next
+        }
+        this.tail = pre
+        this.tail.nex = null
+
+        this.length --
+        if(this.length ===0){
+            this.head = null
+            this.tail = null
+        }
+    }
 }
 
 
 
 let myLinkedList = new LinkedList(5)
 myLinkedList.push(5)
+myLinkedList.pop()
 console.log(myLinkedList)
