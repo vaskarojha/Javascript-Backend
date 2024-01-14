@@ -38,7 +38,7 @@ class LinkedList{
             temp = temp.next
         }
         this.tail = pre
-        this.tail.nex = null
+        this.tail.next = null
 
         this.length --
         if(this.length ===0){
@@ -46,11 +46,29 @@ class LinkedList{
             this.tail = null
         }
     }
+    unshift(value){
+        const newNode = new Node(value)
+
+        if(!this.head){
+            this.head =newNode
+            this.tail = newNode
+        }
+        else{
+            newNode.next = this.haad
+            this.head = newNode
+        }
+        this.length ++
+        return this
+    }
 }
 
 
 
 let myLinkedList = new LinkedList(5)
 myLinkedList.push(5)
+console.log(myLinkedList)
 myLinkedList.pop()
+console.log(myLinkedList)
+
+myLinkedList.unshift(7)
 console.log(myLinkedList)
