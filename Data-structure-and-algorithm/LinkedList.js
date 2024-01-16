@@ -72,6 +72,25 @@ class LinkedList{
         }
         return temp
     }
+    get(index){
+        if(index<0 || index >= this.length) undefined
+
+        let temp = this.head
+
+        for(let i =0; i<index ; i++){
+            temp = temp.next
+        }
+        return temp
+    }
+
+    set(index, value){
+        let temp = this.get(index)
+        if(temp){
+            temp.value= value
+            return value
+        }
+        return false
+    }
 }
 
 
@@ -87,4 +106,9 @@ myLinkedList.unshift(7)
 console.log(myLinkedList)
 
 myLinkedList.shift()
+console.log(myLinkedList)
+
+console.log(myLinkedList.get(1))
+
+myLinkedList.set(1,12)
 console.log(myLinkedList)
