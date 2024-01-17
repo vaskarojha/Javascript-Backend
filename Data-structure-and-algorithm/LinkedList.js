@@ -103,8 +103,22 @@ class LinkedList{
         newNode.next = temp.next
         temp.next = newNode
         this.length++
-
     }
+
+    remove(index){
+        if(index=== 0) this.shift()
+        if(index== this.length -1) this.pop()
+        if(index<0 || index>= this.length) undefined
+
+        const before = this.get(index-1)
+        const temp = before.next
+
+        before.next = temp.next
+        temp.next = null
+        this.length --
+        return temp
+    }
+
 }
 
 
@@ -128,3 +142,7 @@ myLinkedList.set(1,12)
 console.log(myLinkedList)
 
 myLinkedList.insert(1,17)
+console.log(myLinkedList)
+
+myLinkedList.remove(1)
+console.log(myLinkedList)
