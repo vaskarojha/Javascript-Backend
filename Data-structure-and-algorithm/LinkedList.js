@@ -91,6 +91,20 @@ class LinkedList{
         }
         return false
     }
+
+    insert(index, value){
+        if(index === 0) this.unshift(value)
+        if(index === this.length) this.push(value)
+        if(index< 0 || index > this.length) false
+        
+        const newNode = newNode(value)
+        const temp = this.get(index -1)
+
+        newNode.next = temp.next
+        temp.next = newNode
+        this.length++
+
+    }
 }
 
 
@@ -112,3 +126,5 @@ console.log(myLinkedList.get(1))
 
 myLinkedList.set(1,12)
 console.log(myLinkedList)
+
+myLinkedList.insert(1,17)
