@@ -1,0 +1,47 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.grandParent{
+    min-width: 500px;
+    min-height: 500px;
+    width: 500px;
+    height: 500px;
+    margin: auto auto;
+    margin-top:50px;
+    padding:auto;
+    background-color: brown;
+    container-type: absolute;
+}
+.parent{
+    min-width: 400px;
+    min-height: 400px;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    margin-top:50px;
+    container-type: relative;
+    background-color: rgb(42, 165, 75);
+}
+.child{
+    min-width: 200px;
+    min-height: 200px;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    margin-top:50px;
+    container-type: relative;
+    background-color: rgb(71, 42, 165);
+}
+
