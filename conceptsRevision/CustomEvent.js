@@ -45,3 +45,23 @@ button.addEventListener("click", e=>{
     lastClick = 0
 })
 button.dispatchEvent(myEvent)
+
+
+
+// currying - > function that takes one arguement at time and returns another function
+
+//normal function 
+function f(a,b){
+    console.log(a,b)
+}
+
+// currying function
+function g(a){
+    return function(b){
+        return `${a}, ${b}`
+    }
+}
+
+console.log(g(5)(6))
+
+// why use currying => multiple reasons to avoid passing sam var again and again, to create higherorder function, to create function less likely to have error
