@@ -65,3 +65,19 @@ function g(a){
 console.log(g(5)(6))
 
 // why use currying => multiple reasons to avoid passing sam var again and again, to create higherorder function, to create function less likely to have error
+
+
+// New Event
+const myEvent2 = new Event("myCustomEvent", { cancelable:true, bubbles:true })
+
+const button2 = document.querySelector("button")
+
+button.addEventListener('myCustomEvent', e=>{
+    console.log("Button", e.defaultPrevented)
+})
+
+document.addEventListener('myCustomEvent', e=>{
+    console.log("Document", e.defaultPrevented)
+})
+
+button2.dispatchEvent(myEvent)
