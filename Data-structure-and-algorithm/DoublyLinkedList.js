@@ -144,3 +144,19 @@ myDoublyLinkList.Pop()
 console.log(myDoublyLinkList)
 
 myDoublyLinkList.unshift(1)
+
+
+class StackNode{
+    constructor(value){
+        this.value = value
+        this.next = null
+    }
+}
+
+class Stack {
+    constructor(value){
+        const newNode = new Node(value)
+        this.top = newNode
+        this.length =1
+    }
+}
