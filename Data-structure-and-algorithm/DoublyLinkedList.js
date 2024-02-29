@@ -172,9 +172,19 @@ class Stack {
         return this
     }
 
+    pop(){
+        if(this.length ===0) return undefined
+        let temp = this.top
+        this.top = this.top.next
+        temp.next = null
+
+        this.length --
+        return temp
+    }
 }
 
 let myStack = new Stack(5)
 myStack.push(25)
 myStack.push(14)
 myStack.push(8)
+myStack.pop()
