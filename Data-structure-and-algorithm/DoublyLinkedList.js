@@ -183,6 +183,26 @@ class Stack {
     }
 }
 
+class QueueNode{
+    constructor(value){
+        this.value = value
+        this.next = null
+    }
+}
+
+class Queue{
+    constructor(value){
+        const newNode = new QueueNode(value)
+        this.first = newNode
+        this.last = newNode
+        this.length =1
+    }
+}
+
+let myQueue = new Queue(4)
+myQueue
+
+
 let myStack = new Stack(5)
 myStack.push(25)
 myStack.push(14)
