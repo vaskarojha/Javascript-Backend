@@ -197,7 +197,24 @@ class Queue{
         this.last = newNode
         this.length =1
     }
+
+    enqueue(value){
+        const newNode = new QueueNode(value)
+        if(this.value === 0){
+            this.first = newNode
+            this.last = newNode
+        } else{
+            this.last.next = newNode
+            this.last = newNode
+        }
+        this.length ++
+        return this
+    }
 }
+
+let myQueue1= new Queue(11)
+myQueue1.enqueue(3)
+myQueue.enqueue(23)
 
 let myQueue = new Queue(4)
 myQueue
