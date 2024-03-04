@@ -237,3 +237,21 @@ myStack.push(25)
 myStack.push(14)
 myStack.push(8)
 myStack.pop()
+
+class BstNode{
+    constructor(value){
+        this.value = value
+        this.left = null
+        this.right = null
+    }
+
+}
+
+class BST{
+    constructor(){
+        this.root = null
+    }
+}
+
+let myTree = new BST()
+myTree
