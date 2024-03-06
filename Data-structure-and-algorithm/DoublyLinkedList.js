@@ -280,6 +280,20 @@ insert(value){
 }
 
 
+constains(value) {
+    if(this.root === null) false
+    let temp = this.root
+
+    while(temp){
+        if(value<temp.value){
+            temp = temp.left
+        }
+        else if(value>temp.value){
+            temp = temp.right
+        } else true
+    }
+    return false
+}
 
 let myTree = new BST()
 myTree
