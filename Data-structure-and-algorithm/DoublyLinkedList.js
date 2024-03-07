@@ -295,6 +295,13 @@ constains(value) {
     return false
 }
 
+minValueNode(currentNode){
+    while(currentNode.left != null){
+        currentNode = currentNode.left
+    }
+    return currentNode
+}
+
 let myTree = new BST()
 myTree
 
