@@ -307,3 +307,21 @@ myTree
 
 myTree.insert(50)
 myTree.insert(65)
+
+class HashTable{
+    constructor(size = 7){
+        this.datamap= new Array(size)
+
+    }
+    _hash(key){
+        let hash =0
+        for(let i=0; i<key.length; i++){
+            hash = (hash+key.charCodeAt(i) *23) % this.datamap.length
+
+        }
+        return hash
+    }
+}
+
+let myHashTable = new HashTable()
+myHashTable
