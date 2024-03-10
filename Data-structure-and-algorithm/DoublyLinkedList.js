@@ -328,6 +328,18 @@ class HashTable{
     
         this.dataMap[index].push([key, value])
     }
+
+    get(key){
+        let index = this._hash(key)
+        if(this.datamap[index]){
+            for(let i=0;i<this.datamap[index].length; i++){
+                if(this.datamap[index][i][0] === key){
+                    return this.datamap[index][i][1]
+                }
+            }
+        }
+        return undefined
+    }
 }
 
 
