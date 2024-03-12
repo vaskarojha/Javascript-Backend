@@ -343,10 +343,10 @@ class HashTable{
 
     keys(){
         let allKeys = []
-        for(let i=0; i<this.dataMap.length; i++){
+        for(let i=0; i<this.datamap.length; i++){
             if(this.dataMap[i]){
-                for(let j = 0; j<this.dataMap[i], j++){
-                    allKeys.push(this.dataMap[i][j][0])
+                for(let j = 0; j<this.datamap[i], j++){
+                    allKeys.push(this.datamap[i][j][0])
                 }
             }
         }
