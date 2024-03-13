@@ -358,3 +358,47 @@ class HashTable{
 
 let myHashTable = new HashTable()
 myHashTable
+
+var simplehash = new Object();
+// or
+// var simplehash = {};
+
+simplehash['key1'] = 'value1';
+simplehash['key2'] = 'value2';
+simplehash['key3'] = 'value3';
+
+for (var key in simplehash) {
+  // use hasOwnProperty() to filter out properties from Object.prototype
+  if (simplehash.hasOwnProperty(key)) {
+    console.log('key is: ' + key + ', value is: ' + simplehash[key]);
+  }
+}
+
+var maphash = new Map();
+
+maphash.set('key1', 'value1');
+maphash.set('key2', 'value2');
+maphash.set('key3', 'value3');
+
+console.log(maphash.get('key3'));
+// Output: value3
+
+maphash.set('key1', 'new value');
+
+console.log(maphash.get('key1'));
+// Output: new value
+
+console.log(maphash.size);
+// Output: 3
+
+maphash.delete('key2');
+
+console.log(maphash.size);
+// Output: 2
+
+for (const [key, value] of maphash) {
+  console.log(key + ' = ' + value);
+}
+// Output: key1 = new value
+//         key3 = value3
+
